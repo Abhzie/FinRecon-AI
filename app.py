@@ -106,18 +106,16 @@ with left:
 
 with right:
 
-    st.markdown("### 🏢 Exception Value by Vendor")
+    st.markdown("### 💰 Exception Value by Type")
 
-    vendor_exceptions = (
+    exception_value_by_status = (
         result[result["status"] != "MATCHED"]
-        .groupby("vendor")["amount_bank"]
+        .groupby("status")["amount_bank"]
         .sum()
         .sort_values(ascending=False)
-        .head(10)
     )
 
-    st.bar_chart(vendor_exceptions)
-
+    st.bar_chart(exception_value_by_status)
 # -----------------------------
 # Transaction results
 # -----------------------------
